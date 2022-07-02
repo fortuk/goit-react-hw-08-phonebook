@@ -1,11 +1,52 @@
-import { configureStore } from '@reduxjs/toolkit';
-import contactsSlice, { filterReducer } from './contacts/phone-book/contacts-reducer';
+// import { combineReducers, createStore } from 'redux';
+// import { composeWithDevTools } from 'redux-devtools-extension';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import contactsReducer from './phonebook/contacts-reducer';
+import { authReducer } from './auth';
+import { logger } from 'redux-logger';
+import {
+    persistStore, 
+    persistReducer,
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER, 
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-const store = configureStore({
+const middleware = [
+    ...getDefaultMiddleware({
+        serializableCheck: {
+            ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+    }), logger, 
+];
+
+// const contactsPersistConfig = {
+//     key: 'contacts',
+//     storage,
+//     blacklist: ['filter'],
+// };
+// const rootReducer = combineReducers({
+//     contacts: contactsReducer,
+// });
+// const store = createStore(rootReducer, composeWithDevTools());
+
+const authPersistConfig = {
+    key: 'auth',
+    storage,
+    whitelist: ['token'],
+};
+
+export const store = configureStore({
     reducer: {
-        phoneBook: contactsSlice,
-        filter: filterReducer,
+        auth: persistReducer(authPersistConfig, authReducer),
+        contacts: contactsReducer, 
     },
+    middleware,    
+    devTools: process.env.NODE_ENV === 'development',
 });
 
-export default store;
+export const persistor = persistStore(store);
