@@ -3,6 +3,10 @@
     "version": "0.1.0",
     "private": true,
     "homepage": "https://fortuk.github.io/goit-react-hw-08-phonebook/",
+    "repository": {
+        "type": "git",
+        "url": "git+https://fortuk.github.io/goit-react-hw-08-phonebook.git"
+    },
     "dependencies": {
         "@reduxjs/toolkit": "^1.6.1",
         "@testing-library/jest-dom": "^5.11.4",
