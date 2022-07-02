@@ -1,0 +1,2 @@
+(this["webpackJsonpgoit-react-hw-08-phonebook"]=this["webpackJsonpgoit-react-hw-08-phonebook"]||[]).push([[2],{117:function(e,t,n){e.exports={heading:"RegisterView_heading__1z0ej"}},124:function(e,t,n){"use strict";n.r(t),n.d(t,"default",(function(){return s}));var c=n(30),i=n(117),o=n.n(i),r=n(1);function s(){return Object(r.jsxs)(r.Fragment,{children:[Object(r.jsx)("h2",{className:o.a.heading,children:"Register your account"}),Object(r.jsx)(c.a,{})]})}}}]);
+//# sourceMappingURL=RegisterView.12a8e1f8.chunk.js.map
