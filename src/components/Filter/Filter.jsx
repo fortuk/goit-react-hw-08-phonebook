@@ -1,14 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import s from './Filter.module.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { phonebookAction, phonebookSelector } from '../../redux/contacts/phone-book';
+import { ContactsSelectors, ContactsActions } from '../../redux/phonebook';
 
 export default function Filter() {
-    const filter = useSelector(phonebookSelector.getFilter);
+    const filter = useSelector(ContactsSelectors.getFilter);
     const dispatch = useDispatch();
+    const onChangeFilter = event => {
+        dispatch(ContactsActions.changeFilter(event.currentTarget.value))
+    };
     return (
-        <label className={s.label}>
-            <input type="text" value={filter} onChange={e => dispatch(phonebookAction.changeFilter(e.target.value))} className={s.input} />
-        </label>
+        <form className={s.form}>
+            <label className={s.label}>
+                Find contacts by name
+                <input type="text" value={filter} required onChange={onChangeFilter} className={s.input} />
+            </label>
+        </form>
     );
+}
+Filter.propTypes = {
+    filter: PropTypes.string,
 }

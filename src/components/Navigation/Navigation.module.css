@@ -1,0 +1,28 @@
+.navigation{
+    background-color: bisque;
+}
+.link {
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px;
+    font-weight: 500;
+    color: brown;
+    font-size: 18px;
+}
+.link:active {
+    color:red;
+}
+.link:hover {
+    color: black;
+}
+.icon {
+    display: inline;
+    margin-right: 5px;
+}
+.icon:hover {
+    color: black;
+}
+path {
+    display: inline;    
+    padding: 3px;
+}

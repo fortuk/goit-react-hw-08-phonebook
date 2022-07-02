@@ -1,0 +1,20 @@
+.link {
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px;
+    font-weight: 500;
+    font-size: 18px;
+    color: brown;
+}
+.link:active {
+  color:red;
+}
+.link:hover {
+  color: black;
+}
+.icon {
+  display: inline;
+}
+path {
+  display: inline;
+}

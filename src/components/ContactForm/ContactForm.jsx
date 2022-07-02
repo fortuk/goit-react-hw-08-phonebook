@@ -1,19 +1,19 @@
 
-import { useState } from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { phonebookSelector, phonebookOperation } from '../../redux/contacts/phone-book';
 import s from '../ContactForm/ContactForm.module.css'
-
+import { ContactsSelectors, ContactsOperations } from '../../redux/phonebook';
 
 
 export default function ContactForm() {
+    const dispatch = useDispatch();
+    const contacts = useSelector(ContactsSelectors.getFiltredContacts);
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
-    const contacts = useSelector(phonebookSelector.getContacts);
-    const dispatch = useDispatch();
 
-    const handleChange = e => {
-        const { name, value } = e.target;
+    const handleChange = event => {
+        const { name, value } = event.target;
         switch (name) {
             case 'name':
                 setName(value);
@@ -26,26 +26,15 @@ export default function ContactForm() {
         }
     };
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        if (
-            contacts.find(
-                contact => contact.name.toLowerCase() === name.toLowerCase(),
-            )
-        ) {
-            alert(`${name} is already in contacts.`);
-        } else if (contacts.find(contact => contact.number === number)) {
-            alert(`${number} is already in contacts.`);
-        } else if (!name.trim() || !number.trim()) {
-            alert("Enter the contact's name and number phone!");
-        } else {
-            dispatch(phonebookOperation.addContact({ name, number }));
-            setName('');
-            setNumber('');
-        }
-    };
+    const handleSubmit = event => {
+        event.preventDefault();
+        dispatch(ContactsOperations.addContact(contacts, name, number));
+        setName('');
+        setNumber('');
+    }
+
     return (
-        <form onSubmit={handleSubmit} className={s.form}>
+        <form onSubmit={handleSubmit} className={s.form} method="post">
             <label className={s.label}>
                 Name
                 <input
@@ -78,3 +67,7 @@ export default function ContactForm() {
         </form>
     );
 }
+ContactForm.propTypes = {
+    name: PropTypes.string,
+    number: PropTypes.number,
+};

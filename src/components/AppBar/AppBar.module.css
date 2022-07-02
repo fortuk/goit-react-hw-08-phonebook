@@ -1,0 +1,9 @@
+.header {
+    background-color: bisque;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 624px;
+    justify-content: center;
+    border-bottom: 1px solid brown;
+}

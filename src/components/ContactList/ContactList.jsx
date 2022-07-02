@@ -1,26 +1,37 @@
+import React from 'react';
 import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import s from './ContactList.module.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { phonebookSelector, phonebookOperation } from '../../redux/contacts/phone-book';
+import { ContactsSelectors, ContactsOperations } from '../../redux/phonebook';
 
 export default function ContactList() {
-    const contacts = useSelector(phonebookSelector.getFilterContacts);
+    const error = useSelector(ContactsSelectors.getError);
+    const loading = useSelector(ContactsSelectors.getLoadingStatus);
     const dispatch = useDispatch();
-
     useEffect(() => {
-        dispatch(phonebookOperation.fetchContacts());
+        dispatch(ContactsOperations.fetchContact());
     }, [dispatch]);
+    const contacts = useSelector(ContactsSelectors.getFiltredContacts);
 
     return (
-        <ul className={s.list}>
-            {contacts.map(({ id, name, number }) => (
-                <li key={id} className={s.item}>
-                    {name}: {number}
-                    <button onClick={() => dispatch(phonebookOperation.deleteContact(id))} type="button" className={s.button}>DELETE</button>
+        <>
+            {loading && <h2 className={s.loading}>Loading...</h2>}
+            {error && <h2 className={s.error}>{error}</h2>}
+            <ul className={s.list}>
+                {contacts.map(({ id, name, number }) => (
+                    <li key={id} className={s.item}>
+                        <p className={s.name}>{name}: <span>{number}</span></p>
+                        <button onClick={() => dispatch(ContactsOperations.deleteContact(id))} type="button" className={s.button}>DELETE</button>
 
-                </li>
-
-            ))}
-        </ul>
-    );
+                    </li>
+                ))}
+            </ul>
+        </>
+    )
+};
+ContactList.propTypes = {
+    id: PropTypes.any,
+    name: PropTypes.string,
+    number: PropTypes.string,
 }
