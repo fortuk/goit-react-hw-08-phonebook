@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/views/RegisterView.module.css"],"names":[],"mappings":"AAAA,6BACI,uBAAwB,CACxB,QAAS,CACT,YAAa,CACb,WACJ","file":"RegisterView.b24b2637.chunk.css","sourcesContent":[".heading{\n    background-color: bisque;\n    margin: 0;\n    padding: 10px;\n    width: 624px;\n}"]}
