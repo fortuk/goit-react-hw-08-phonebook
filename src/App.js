@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { lazy, Suspense } from 'react';
+import { Suspense } from 'react';
 import Loader from 'react-loader-spinner';
 import { Switch, Redirect } from 'react-router-dom';
 import { authOperations, authSelectors } from './redux/auth';
@@ -10,11 +10,11 @@ import s from './App.module.css';
 import HomeView from './views/HomeView';
 import AppBar from './components/AppBar';
 import PrivateRoute from './components/PrivateRoute';
-import PublicRoute from './components/RegistrationForm';
+import PublicRoute from './components/PublicRoute';
 
-const RegisterView = lazy(() => import('./views/RegisterView' /* webpackChunkName: "RegisterView"*/),);
-const LoginView = lazy(() => import('./views/LoginView' /* webpackChunkName: "LoginView"*/),);
-const ContactsView = lazy(() => import('./views/ContactsView' /* webpackChunkName: "ContactsView"*/),);
+import RegisterView from './views/RegisterView/RegisterView';
+import LoginView from './views/LoginView';
+import ContactsView from './views/ContactsView';
 
 
 export default function App() {

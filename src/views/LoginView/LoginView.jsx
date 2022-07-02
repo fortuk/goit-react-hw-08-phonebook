@@ -1,5 +1,5 @@
-import LoginForm from '../components/LoginForm';
-import s from '../views/LoginView.module.css';
+import LoginForm from '../../components/LoginForm';
+import s from '../LoginView/LoginView.module.css';
 
 export default function LoginView() {
   return (
