@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Suspense } from 'react';
 import Loader from 'react-loader-spinner';
-import { Switch } from 'react-router-dom';
+import { Redirect, Switch } from 'react-router-dom';
 import { authOperations, authSelectors } from './redux/auth';
 
 import s from './App.module.css';
@@ -47,7 +47,9 @@ export default function App() {
                     <PrivateRoute path="/contacts" redirectTo="/login">
                         <ContactsView />
                     </PrivateRoute>
-
+                    <PublicRoute path="*">
+                        <Redirect to="/" />
+                    </PublicRoute>
                 </Switch>
             </Suspense>
         </div>

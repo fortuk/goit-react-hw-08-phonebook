@@ -15,7 +15,7 @@ export default function ContactForm() {
         const { name, value } = event.target;
         switch (name) {
             case 'name':
-                setName(value.toLowerCase());
+                setName(value);
                 break;
             case 'number':
                 setNumber(value);

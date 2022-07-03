@@ -23,7 +23,7 @@ export const addContact = (contacts, name, number) => dispatch => {
     //             .then(({ data }) => dispatch(updateContactSuccess(data)))
     //             .catch(error => dispatch(updateContactError(error)));
     //         }
-    const isInContacts = contacts.some(contact => contact.name === name);
+    const isInContacts = contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase());
     if (isInContacts) {
         alert(`${name} is already in contacts`);
         return;
