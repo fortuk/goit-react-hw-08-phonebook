@@ -24,19 +24,19 @@ export const addContact = (contacts, name, number) => dispatch => {
     //             .catch(error => dispatch(updateContactError(error)));
     //         }
     const isInContacts = contacts.some(contact => contact.name === name);
-        if (isInContacts) { 
-            alert(`${name} is already in contacts`);
-            return;
-        }    
+    if (isInContacts) {
+        alert(`${name} is already in contacts`);
+        return;
+    }
     const contact = {
-        name, 
+        name,
         number
     };
 
     dispatch(addContactRequest());
 
     axios.post('/contacts', contact).then(({ data }) => dispatch(addContactSuccess(data))).catch(error => dispatch(addContactError(error)));
-// }
+    // }
 };
 
 export const deleteContact = contactId => dispatch => {

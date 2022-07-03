@@ -1,6 +1,5 @@
 
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import s from '../ContactForm/ContactForm.module.css'
 import { ContactsSelectors, ContactsOperations } from '../../redux/phonebook';
@@ -16,7 +15,7 @@ export default function ContactForm() {
         const { name, value } = event.target;
         switch (name) {
             case 'name':
-                setName(value);
+                setName(value.toLowerCase());
                 break;
             case 'number':
                 setNumber(value);
@@ -67,7 +66,3 @@ export default function ContactForm() {
         </form>
     );
 }
-ContactForm.propTypes = {
-    name: PropTypes.string,
-    number: PropTypes.number,
-};

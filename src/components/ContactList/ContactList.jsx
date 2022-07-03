@@ -1,6 +1,5 @@
 import React from 'react';
 import { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import s from './ContactList.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { ContactsSelectors, ContactsOperations } from '../../redux/phonebook';
@@ -30,8 +29,3 @@ export default function ContactList() {
         </>
     )
 };
-ContactList.propTypes = {
-    id: PropTypes.any,
-    name: PropTypes.string,
-    number: PropTypes.string,
-}

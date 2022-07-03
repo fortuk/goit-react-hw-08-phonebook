@@ -13,7 +13,7 @@ ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
             <PersistGate loading={<h3>Загружаем локальное хранилище</h3>} persistor={persistor}>
-                <BrowserRouter>
+                <BrowserRouter basename='/goit-react-hw-08-phonebook/'>
                     <App />
                 </BrowserRouter>
             </PersistGate>

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import s from './Filter.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { ContactsSelectors, ContactsActions } from '../../redux/phonebook';
@@ -19,6 +18,4 @@ export default function Filter() {
         </form>
     );
 }
-Filter.propTypes = {
-    filter: PropTypes.string,
-}
+
